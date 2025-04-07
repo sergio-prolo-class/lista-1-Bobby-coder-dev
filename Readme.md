@@ -17,14 +17,36 @@ Este exercício permite desenhar três formas geométricas diferentes utilizando
    ```bash
    gradle run --args "triangulo 5"
 
+   Saída:
+
+        *
+       **
+      ***
+     ****
+    *****
+
 1. **Losango**  
     Para desenhar um losango, informe a largura desejada como argumento.
     ```bash
     gradle run --args "losango 7"
+
+      *
+     ***
+    *****
+     ***
+      *
 3. **Retângulo**
     Para desenhar um retângulo, informe a largura e a altura como argumentos.
     ```bash
     gradle run --args "retangulo 8 5"
+
+    Saída:
+
+    ********
+    *      *
+    *      *
+    *      *
+    ********
 
 ## Exercício 2: Decodificador de Resistência
 
