@@ -131,6 +131,7 @@ Resistência: 4,9 M Ohms (+- 0,25%)
 
    ```bash
    gradle run
+
    C C C . . . . . . .
    . . . . . . . . . .
    . . . . . S S S . .
@@ -158,16 +159,47 @@ Resistência: 4,9 M Ohms (+- 0,25%)
    
    ### Exemplo de execução
 
+
+   **arquivo exemplo**
+   ```bash
+   P P P P P . . . . .
+   . . . . . . . . . .
+   . . . . . . . . . .
+   E E E E . . . . . .
+   . . . . . . . . . .
+   C C C . . . . . . .
+   . . . . . . . . . .
+   . . . . S S S . . .
+   . . . . . . . . . .
+   . . . . N N . . . .
+
+   ``` 
+
    ```bash
    gradle run < tabuleiro.txt
    
    Tabuleiro válido
    ```
 
+   **arquivo exemplo**
    ```bash
-   gradle run < tabuleiro.txt
-   
-   Tabuleiro válido
+   P P P P P . . . . .
+   . . . . . . . . . .
+   . . . . . . . . . .
+   E E E E . . . . . .
+   . . . . . . . . . .
+   C C C . . . . . . .
+   . . . . S . . . . .
+   . . . . . S . . . .
+   . . . . . . S . . .
+   . . . . N N . . . .
+
+   ``` 
+
+   ```bash
+   gradle run < arquivo.txt
+   Tabuleiro inválido: barco S não está na horizontal nem vertical.
+   Tabuleiro inválido.
    ```
 
    --- 
