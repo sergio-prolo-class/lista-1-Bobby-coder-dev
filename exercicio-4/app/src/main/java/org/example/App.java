@@ -10,30 +10,31 @@ import java.io.IOException;
 public class App {
     
     public static void main(String[] args) {
-        String[] tabuleiro = new String[10];
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            
-            int linhas = 0;
+        Scanner entrada = new Scanner(System.in);
 
-            // ler o tabuleiro
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (linhas >= 10) {
-                    System.out.println("Tabuleiro inválido: mais de 10 linhas.");
-                    return;
-                }
-                line = line.replaceAll(" ", "");
-                if (line.length() != 10) {
-                    System.out.println("Tabuleiro inválido: linha " + (linhas + 1) + " não tem 10 colunas.");
-                    return;
-                }
-                tabuleiro[linhas++] = line;
+        int linhas = 0;
+        String[] tabuleiro = new String[10];
+
+        // Ler o tabuleiro
+        while (entrada.hasNext()) {
+            if (linhas >= 10) {
+                System.out.println("Tabuleiro inválido: mais de 10 linhas.");
+                return;
             }
 
-        } catch (IOException e) {
-            System.out.println("Erro ao ler o tabuleiro: " + e.getMessage());
+            String linha = entrada.nextLine().replaceAll(" ", "");
+            if (linha.length() != 10) {
+                System.out.println("Tabuleiro inválido: linha " + (linhas + 1) + " não tem 10 colunas.");
+                return;
+            }
+
+            tabuleiro[linhas++] = linha;
+        }
+
+        if (linhas < 10) {
+            System.out.println("Tabuleiro inválido: menos de 10 linhas.");
             return;
-        } 
+        }
 
         boolean valido = verificaBarcos(tabuleiro);
 
@@ -103,7 +104,7 @@ public class App {
             }
             if (horizontal) {
                 for (int k = 0; k < tamanho; k++) {
-                    tabuleiro[i] = tabuleiro[i].substring(0, j + k) + '.' + tabuleiro[i].substring(j + k + 1);
+                    tabuleiro[i] = tabuleiro[i].replace(tabuleiro[i].charAt(j + k), '.');
                 }
                 return true;
             }
@@ -120,8 +121,7 @@ public class App {
             }
             if (vertical) {
                 for (int k = 0; k < tamanho; k++) {
-                    tabuleiro[i + k] = tabuleiro[i + k].substring(0, j) + '.' + tabuleiro[i + k].substring(j + 1);
-                }
+                    tabuleiro[i + k] = tabuleiro[i + k].replace(tabuleiro[i + k].charAt(j), '.');                }
                 return true;
             }
         }
